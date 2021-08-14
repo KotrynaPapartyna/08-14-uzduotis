@@ -1,5 +1,7 @@
 <?php
 
+// NEBAIGTA
+
 require_once("connect.php");
 
 
@@ -32,7 +34,7 @@ if(mysqli_query($prisijungimas, $sql)) {
     echo "kazkas negerai"; 
 }
 
-// uzdaromas 
+
 mysqli_close($prisijungimas); 
 
 

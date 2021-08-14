@@ -24,6 +24,8 @@ require_once("connect.php")
 
 <?php
 
+// NEBAIGTA
+
 if(isset($_GET["prideti"])) {
     if(isset($_GET["vardas"]) && !empty($_GET["vardas"]) 
     && isset($_GET["pavarde"]) && !empty($_GET["pavarde"]) 
@@ -31,7 +33,6 @@ if(isset($_GET["prideti"])) {
         $vardas = $_GET["vardas"];
         $pavarde = $_GET["pavarde"];
         $teises_id = $_GET["teises_id"];
-
     
         
     if(mysqli_query($prisijungimas, $sql)) {

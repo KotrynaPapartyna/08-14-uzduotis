@@ -1,5 +1,7 @@
 <?php
 
+// prisijungimo failas sutvarkytas
+
 $duomenu_bazes_serveris="localhost"; 
 $duomenu_bazes_slapyvardis="root"; 
 $duomenu_bazes_slaptazodis="";

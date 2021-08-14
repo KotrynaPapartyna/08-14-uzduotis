@@ -14,6 +14,8 @@ require_once("klientupildymoforma2.php")
 //4. Paspaudus ant kliento, turi būti įmanoma redaguoti jo duomenis ir išsaugoti.
 //5. Kiekvieną klientą turi būti galimybė ištrinti iš duomenų bazės.
 
+// NEBAIGTA
+
 class Klientai {
     public $vardas;
     public $pavarde;
