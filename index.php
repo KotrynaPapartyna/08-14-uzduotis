@@ -27,11 +27,11 @@
 <body>
     <?php
     
-        if(isset($_GET["submit"])) {
-            if(isset($_GET["username"]) && isset($_GET["password"]) 
-            && !empty($_GET["username"]) && !empty($_GET["password"])) {
-                $username = $_GET["username"];
-                $password = $_GET["password"];
+        if(isset($_POST["submit"])) {
+            if(isset($_POST["username"]) && isset($_POST["password"]) 
+            && !empty($_POST["username"]) && !empty($_POST["password"])) {
+                $username = $_POST["username"];
+                $password = $_POST["password"];
 
                 $sql = "SELECT * FROM `uzsiregistrave vartotojai` 
                     WHERE slapyvardis='$username' AND slaptazodis='$password'"; 
@@ -66,8 +66,8 @@
 
     <?php if(!isset($_COOKIE["prisijungta"])) { ?>
     <div class="container">
-        <h1>Klientų valdymo sistema</h1>
-        <form action="index.php" method="get">
+        <h1>Prisijungimas</h1>
+        <form action="index.php" method="post">
             <div class="form-group">
                 <label for="username">Slapyvardis</label>
                 <input class="form-control" type="text" name="username" />

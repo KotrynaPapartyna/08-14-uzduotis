@@ -30,14 +30,14 @@
 
 
 <?php 
-    if(isset($_GET["submit"])) { 
+    if(isset($_POST["submit"])) { 
        
        
-       $name =$_GET["name"];
-       $username =$_GET["username"];
-       $password =$_GET["password"];
-       $repeat_password = $_GET["repeat-password"];
-       $description = $_GET["description"];
+       $name =$_POST["name"];
+       $username =$_POST["username"];
+       $password =$_POST["password"];
+       $repeat_password = $_POST["repeat-password"];
+       $description = $_POST["description"];
 
        //
        $sql = "SELECT * FROM `uzsiregistrave vartotojai` WHERE slapyvardis='$username' ";
@@ -68,7 +68,7 @@
 
 <div class="container">
         <h1>Registracija</h1>
-        <form action="registracija.php" method="get">
+        <form action="registracija.php" method="post">
             <div class="form-group">
                 <label for="name">Vardas</label>
                 <input class="form-control" type="text" name="name" required="true" value="<?php 

@@ -87,6 +87,9 @@ if(isset($_GET["submit"])) {
                         <option value="4">Nemokus klientas</option>
                         <option value="5">Ne EU klientas</option>
                         <option value="6">EU klientas</option>
+                        <option value="4">Atsakingas klientas</option>
+                        <option value="5">Azijos klientas</option>
+                        <option value="6">Kinijos klientas</option>
                     </select>
                 </div>
 
