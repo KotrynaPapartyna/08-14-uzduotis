@@ -54,7 +54,7 @@
 
             if(mysqli_query($conn, $sql)) {
                 $class= "success";
-                $message = "Vartotojas sukurtas sekmingai";
+                $message = "Vartotojas $name $username sukurtas sekmingai";
             } else {
                 $message = "Kazkas ivyko negerai";
             }
@@ -80,7 +80,7 @@
                 ?>" />
             </div>
             <div class="form-group">
-                <label for="username">Pavardė</label>
+                <label for="username">Slapyvardis</label>
                 <input class="form-control" type="text" name="username" required="true" value="<?php 
                     if(isset($username)) {
                         echo $username;

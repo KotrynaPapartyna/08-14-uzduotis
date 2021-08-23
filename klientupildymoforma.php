@@ -49,9 +49,9 @@ if(isset($_GET["submit"])) {
         $teises_id = intval($_GET["teises_id"]);
 
         
-        $sql = "INSERT INTO `uzduotis`(`vardas`, `pavarde`, `teises_id`) VALUES ('$vardas','$pavarde',$teises_id)";
+        $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) VALUES ('$vardas','$pavarde',$teises_id)";
         if(mysqli_query($conn, $sql)) {
-            $message =  "Vartotojas pridėtas sėkmingai";
+            $message =  "Vartotojas:  $vardas  $pavarde, pridėtas sėkmingai";
             $class = "success";
         } else {
             $message =  "Kažkas įvyko negerai";
@@ -66,8 +66,8 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-        <h1>Vartotojo kūrimas</h1>
-            <form action="naujasKlientas.php" method="get">
+        <h1>Naujo kliento pridėjimas</h1>
+            <form action="klientupildymoforma.php" method="get">
 
                 <div class="form-group">
                     <label for="vardas">Vardas</label>
@@ -77,24 +77,21 @@ if(isset($_GET["submit"])) {
                     <label for="pavarde">Pavardė</label>
                     <input class="form-control" type="text" name="pavarde" placeholder="Pavarde" />
                 </div>
+
                 <div class="form-group">
                     <label for="teises_id">Teisės</label>
-                    <select class="form-control" name="teises_id">
-                        <?php 
-                         $sql = "SELECT * FROM klientai_teises";
-                         $result = $conn->query($sql);
-                        
-                         while($clientRights = mysqli_fetch_array($result)) {
-                            echo "<option value='".$clientRights["reiksme"]."'>";
-                                echo $clientRights["pavadinimas"];
-                            echo "</option>";
-                        }
-                        ?>
+                    <select class="form-control" name="teises_id" id="teises_id">
+                        <option value="1">Naujas klientas</option>
+                        <option value="2">Ilgalaikis klientas</option>
+                        <option value="3">Lojalus klientas</option>
+                        <option value="4">Nemokus klientas</option>
+                        <option value="5">Ne EU klientas</option>
+                        <option value="6">EU klientas</option>
                     </select>
                 </div>
 
                 <a href="klientai.php">Atgal</a><br>
-                <button class="btn btn-primary" type="submit" name="submit">Naujas klientas</button>
+                <button class="btn btn-primary" type="submit" name="submit">Pridėti naują klientą</button>
             </form>
 
             <?php if(isset($message)) { ?>

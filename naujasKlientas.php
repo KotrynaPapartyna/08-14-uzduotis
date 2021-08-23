@@ -41,17 +41,17 @@ if (isset($_COOKIE["prisijungta"])) {
 if(isset($_GET["submit"])) {
     if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) && isset($_GET["teises_id"]) 
     && !empty($_GET["vardas"]) && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
-        $id = $_GET["ID"];
+        // $id = $_GET["ID"];
         $vardas = $_GET["vardas"];
         $pavarde = $_GET["pavarde"];
         $teises_id = intval($_GET["teises_id"]);
 
     
-    $sql = "INSERT INTO `klientai`(`ID`, `vardas`, `pavarde`, `teises_id`) 
+    $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) 
         VALUES ($vardas, $pavarde, $teises_id)"; 
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Vartotojas redaguotas sėkmingai";
+            $message =  "Vartotojas pridetas sėkmingai";
             $class = "success";
         } else {
             $message = "Prašome užpildyti visus laukelius";

@@ -56,11 +56,6 @@ if(isset($_GET["ID"])) {
 <?php } ?>
 
 
-<!-- paieskos mygtuko paspaudimas-->
-<?php if(isset($_GET["search"]) && !empty($_GET["search"])) { ?>
-    <a class="btn btn-primary" href="klientai.php"> Išvalyti paiešką</a>
-<?php } ?>
-
 
 <table class="table table-striped">
   <thead>
