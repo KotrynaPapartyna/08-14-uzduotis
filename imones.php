@@ -20,6 +20,11 @@
 
 <?php 
 
+// imones, prisijungus matosi. 
+// rikiavimas veikia
+// imone issitrina sekmingai 
+
+
 if(!isset($_COOKIE["prisijungta"])) { 
     header("Location: index.php"); 
 

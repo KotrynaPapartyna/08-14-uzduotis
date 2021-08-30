@@ -41,6 +41,8 @@
 //mes pagal ID turetume isvesti visus duomenis i input apie klienta
 //ir naujus duomenis per UPDATE sukelti i duomenu baze
 
+// imone- issitrina, redaguojasi. 
+
 if(isset($_GET["ID"])) {
     $id = $_GET["ID"];
     $sql = "SELECT * FROM imones WHERE ID = $id";
