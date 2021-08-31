@@ -43,18 +43,23 @@ if(isset($_GET["submit"])) {
     if //(isset($_GET["ID"]) 
     (isset($_GET["pavadinimas"]) 
     && isset($_GET["tipas_id"])
+    && isset($_GET["aprasymas"])
+    
 
     //&& !empty($_GET["ID"]) 
-    && !empty($_GET["pavadinimas"]) 
-    && !empty($_GET["tipas_id"])) {
+    && !empty($_GET["pavadinimas"])
+    && !empty($_GET["tipas_id"])
+    && !empty($_GET["aprasymas"])) 
+    {
 
         //$ID = $_GET["ID"];
         $pavadinimas = $_GET["pavadinimas"];
-        $tipas_id = intval($_GET["tipas_id"]);
+        $aprasymas = $_GET["aprasymas"];
+        $tipas_id = $_GET["tipas_id"];
 
         
-        $sql = "INSERT INTO `imones`(`pavadinimas`, `tipas_id`) 
-        VALUES ('$pavadinimas', $tipas_id)";
+        $sql = "INSERT INTO `imones`(`pavadinimas`, 'tipas_id', `aprasymas`) 
+        VALUES ('$pavadinimas', $tipas_id $aprasymas)";
         
         if(mysqli_query($conn, $sql)) {
             $message =  "Imone:  $pavadinimas, pridėta sėkmingai";
@@ -90,6 +95,17 @@ if(isset($_GET["submit"])) {
                     <label for="tipas_id">Tipas</label>
                     <select class="form-control" name="tipas_id" id="tipas_id">
                        
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="aprasymas">Aprasymas</label>
+                    <select class="form-control" name="aprasymas" id="aprasymas">
+                       
                         <option value="1">Maza imone</option>
                         <option value="2">Vidutine imone</option>
                         <option value="3">Didele imone</option>
@@ -98,7 +114,7 @@ if(isset($_GET["submit"])) {
                 </div>
 
                 <a href="imones.php">Atgal</a><br>
-                <button class="btn btn-primary" type="submit" name="submit">Pridėti naują imone</button>
+                <button class="btn btn-primary" type="submit" name="submit">Pridėti naują imonę</button>
             </form>
 
             <?php if(isset($message)) { ?>

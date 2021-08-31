@@ -142,7 +142,7 @@ if(isset($_GET["submit"])) {
                 </div>
 
         <a href="klientai.php">Atgal</a><br>
-        <button class="btn btn-primary" type="submit" name="submit">Edit</button>
+        <button class="btn btn-primary" type="submit" name="submit">Redaguoti</button>
     
     </form>
         

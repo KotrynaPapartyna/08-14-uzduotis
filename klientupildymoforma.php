@@ -34,14 +34,16 @@
 <?php 
 
 
-//if(!isset($_COOKIE["prisijungta"])) { 
-    //header("Location: index.php");    
-//}
+if(!isset($_COOKIE["prisijungta"])) { 
+    header("Location: index.php");    
+}
 
 
 if(isset($_GET["submit"])) {
     if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) 
-    && isset($_GET["teises_id"]) && !empty($_GET["vardas"]) 
+    && isset($_GET["teises_id"]) 
+    
+    && !empty($_GET["vardas"]) 
     && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
 
         $vardas = $_GET["vardas"];
@@ -49,7 +51,9 @@ if(isset($_GET["submit"])) {
         $teises_id = intval($_GET["teises_id"]);
 
         
-        $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) VALUES ('$vardas','$pavarde',$teises_id)";
+        $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) 
+        VALUES ('$vardas','$pavarde', $teises_id)";
+
         if(mysqli_query($conn, $sql)) {
             $message =  "Vartotojas:  $vardas  $pavarde, pridėtas sėkmingai";
             $class = "success";
