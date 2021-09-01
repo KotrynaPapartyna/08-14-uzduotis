@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klientu generavimas</title>
 </head>
+
 <body>
     <form action="duomenubazesPildymas.php" method="get">
         <button type="submit" name="submit">Sukurti klientus</button>
@@ -24,9 +25,7 @@
 // 5. Kiekvieną klientą turi būti galimybė ištrinti iš duomenų bazės.+
 
 
-
-
-    require_once("connection.php");
+require_once("connection.php");
 
     if(isset($_GET["submit"])) {
         for ($i=0; $i<200; $i++) {

@@ -58,10 +58,10 @@ if(isset($_GET["submit"])) {
         $tipas_id = $_GET["tipas_id"];
 
         
-        $sql = "INSERT INTO `imones`(`pavadinimas`, 'tipas_id', `aprasymas`) 
-        VALUES ('$pavadinimas', $tipas_id $aprasymas)";
-        
-        if(mysqli_query($conn, $sql)) {
+    $sql = "INSERT INTO `imones`(`pavadinimas`, 'tipas_id', `aprasymas`) 
+            VALUES ($pavadinimas, $tipas_id, $aprasymas)";
+    
+    if(mysqli_query($conn, $sql)) {
             $message =  "Imone:  $pavadinimas, pridėta sėkmingai";
             $class = "success";
         } else {
@@ -106,9 +106,9 @@ if(isset($_GET["submit"])) {
                     <label for="aprasymas">Aprasymas</label>
                     <select class="form-control" name="aprasymas" id="aprasymas">
                        
-                        <option value="1">Maza imone</option>
-                        <option value="2">Vidutine imone</option>
-                        <option value="3">Didele imone</option>
+                        <option value="Maza imone">Maza imone</option>
+                        <option value="Vidutine imone">Vidutine imone</option>
+                        <option value="Didele imone">Didele imone</option>
                         
                     </select>
                 </div>
