@@ -30,6 +30,9 @@
 
 
 <?php 
+
+// registracija veikia VALIOOOOO
+
     if(isset($_POST["submit"])) { 
        
        
