@@ -20,6 +20,8 @@
 
 <?php 
 
+// REIKIA ITERPTI RIKIAVIMA IR FILTRAVIMA IS 15 PASKAITOS 
+
 if(!isset($_COOKIE["prisijungta"])) { 
     header("Location: index.php"); 
 

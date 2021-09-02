@@ -42,17 +42,30 @@ if(!isset($_COOKIE["prisijungta"])) {
 if(isset($_GET["submit"])) {
     if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) 
     && isset($_GET["teises_id"]) 
+    && isset($_GET["aprasymas"])
+    && isset($_GET["imones_id"])
     
-    && !empty($_GET["vardas"]) 
-    && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
+
+    && !empty($_GET["vardas"]) && !empty($_GET["pavarde"]) 
+    && !empty($_GET["teises_id"]) 
+    && !empty($_GET["aprasymas"]) 
+    && !empty($_GET["imones_id"])) {
 
         $vardas = $_GET["vardas"];
         $pavarde = $_GET["pavarde"];
         $teises_id = intval($_GET["teises_id"]);
+        $aprasymas = $_GET["aprasymas"];
+        $imones_id = $_GET["imones_id"];
 
+        //$today = getdate();
+       // $formatas = "Y-m-d";
+        //$pridejimo_data = date($formatas, $today[0]);
+       // $pridejimo_data = $_GET["pridejimo_data"];
+        $now_date = date("Y-m-d");
         
-        $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) 
-        VALUES ('$vardas','$pavarde', $teises_id)";
+        $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`, 
+        `aprasymas`, `imones_id`, `prisijungimo_data`=$now_date) 
+        VALUES ('$vardas', '$pavarde', '$teises_id', '$aprasymas', '$imones_id', '$now_date')";
 
         if(mysqli_query($conn, $sql)) {
             $message =  "Vartotojas:  $vardas  $pavarde, pridėtas sėkmingai";
@@ -97,6 +110,17 @@ if(isset($_GET["submit"])) {
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="aprasymas">Aprašymas</label>
+                    <input class="form-control" type="text" name="aprasymas" placeholder="aprasymas" />
+                </div>
+
+                <div class="form-group">
+                    <label for="imones_id">ĮmonėsID</label>
+                    <input class="form-control" type="text" name="imones_id" placeholder="imones_id" />
+                </div>
+
+                
                 <a href="klientai.php">Atgal</a><br>
                 <button class="btn btn-primary" type="submit" name="submit">Pridėti naują klientą</button>
             </form>

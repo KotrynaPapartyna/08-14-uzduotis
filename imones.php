@@ -9,10 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imones</title>
+    
+    <style>
+        
+    </style>
 
     <?php require_once("linkai.php"); ?>
-
 </head>
+
+
 <body>
     <div class="container">
     
@@ -31,7 +36,7 @@ if(!isset($_COOKIE["prisijungta"])) {
 } else {
     echo "Sveiki prisijunge";
     echo "<form action='imones.php' method ='get'>";
-    echo "<button class='btn btn-primary' type='submit' name='logout'>Logout</button>";
+    echo "<button class='btn btn-primary' type='submit' name='logout'>Atsijungti</button>";
     echo "</form>";
 
     if(isset($_GET["logout"])) {
