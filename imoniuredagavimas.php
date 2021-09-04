@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imones redagavimas</title>
+    <title>Įmonės redagavimas</title>
 
     <?php require_once("linkai.php"); ?>
     
@@ -42,6 +42,7 @@
 //ir naujus duomenis per UPDATE sukelti i duomenu baze
 
 // imone- issitrina, redaguojasi. 
+// redaguojasi tik pavadinimas
 
 if(isset($_GET["ID"])) {
     $id = $_GET["ID"];
@@ -88,14 +89,17 @@ if(isset($_GET["submit"])) {
         $id = $imone["ID"];
         $pavadinimas = $imone["pavadinimas"];
         $tipas_id = intval($imone["tipas_id"]);
+        $aprasymas = $imone["aprasymas"];
 
-        $sql = "UPDATE `imones` SET `pavadinimas`='$pavadinimas',`tipas_id`=$tipas_id WHERE ID = $id";
+        $sql = "UPDATE `imones` SET `pavadinimas`='$pavadinimas',
+                `tipas_id`=$tipas_id
+                WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
             $message =  "Imone $pavadinimas redaguota sėkmingai";
             $class = "success";
         } else {
-            $message =  "Kazkas ivyko negerai";
+            $message =  "Kažkas įvyko negerai";
             $class = "danger";
         }
     }
@@ -103,7 +107,7 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-    <h1>Imones redagavimas</h1>
+    <h1>Įmonės redagavimas</h1>
     <?php if($hideForm == false) { ?>
         <form action="imoniuredagavimas.php" method="get">
                 
@@ -140,6 +144,13 @@ if(isset($_GET["submit"])) {
                         ?>
                     </select>
                 </div>
+
+                <div class="row">
+                        <div class="col-lg-12">
+                            <textarea class="form-control" id="aprasymas" name="aprasymas"></textarea>
+                        </div>
+                </div>  
+
 
         <a href="imones.php">Atgal</a><br>
         <button class="btn btn-primary" type="submit" name="submit">Redaguoti</button>

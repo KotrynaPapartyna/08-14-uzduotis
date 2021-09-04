@@ -12,6 +12,10 @@ $(function() {
     //$(".alert").fadeIn(500); 
     //$(".alert").delay(2000); 
     //$(".alert").fadeOut(300);
+
+    $(document).ready(function() {
+        $('#aprasymas').summernote();
+      });
 }); 
 
 // bilbiotekoje yra suprogramuota kaip funkcijos/ efektai : 

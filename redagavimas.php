@@ -60,12 +60,17 @@ if(isset($_GET["ID"])) {
 
 if(isset($_GET["submit"])) {
     
-    if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) && isset($_GET["teises_id"]) 
-    && !empty($_GET["vardas"]) && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
+    if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) 
+    && isset($_GET["teises_id"]) 
+    
+    && !empty($_GET["vardas"]) 
+    && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
+        
         $id = $_GET["ID"];
         $vardas = $_GET["vardas"];
         $pavarde = $_GET["pavarde"];
         $teises_id = intval($_GET["teises_id"]);
+        $aprasymas = $_GET["aprasymas"];
 
         $sql = "UPDATE `klientai` SET `vardas`='$vardas',
         `pavarde`='$pavarde',`teises_id`=$teises_id WHERE ID = $id";
@@ -87,7 +92,7 @@ if(isset($_GET["submit"])) {
         `pavarde`='$pavarde',`teises_id`=$teises_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Vartotojas redaguotas sėkmingai";
+            $message =  "Vartotojas $vardas redaguotas sėkmingai";
             $class = "success";
         } else {
             $message =  "Kazkas ivyko negerai";
@@ -98,7 +103,7 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-    <h1>Vartotojo redagavimas</h1>
+    <h1>Kliento redagavimas</h1>
     <?php if($hideForm == false) { ?>
         <form action="redagavimas.php" method="get">
                 
@@ -140,6 +145,14 @@ if(isset($_GET["submit"])) {
                         ?>
                     </select>
                 </div>
+
+                <div class="row">
+                        <div class="col-lg-12">
+                            <label for="aprasymas">Aprašymas</label>
+                            <textarea class="form-control" id="aprasymas" name="aprasymas"></textarea>
+                        </div>
+                </div>   
+        
 
         <a href="klientai.php">Atgal</a><br>
         <button class="btn btn-primary" type="submit" name="submit">Redaguoti</button>

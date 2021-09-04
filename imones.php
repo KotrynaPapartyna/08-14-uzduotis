@@ -30,20 +30,20 @@
 // imone issitrina sekmingai 
 
 
-if(!isset($_COOKIE["prisijungta"])) { 
-    header("Location: index.php"); 
+//if(!isset($_COOKIE["prisijungta"])) { 
+    //header("Location: index.php"); 
 
-} else {
-    echo "Sveiki prisijunge";
-    echo "<form action='imones.php' method ='get'>";
-    echo "<button class='btn btn-primary' type='submit' name='logout'>Atsijungti</button>";
-    echo "</form>";
+///} else {
+    //echo "Sveiki prisijungę";
+    //echo "<form action='imones.php' method ='get'>";
+    //echo "<button class='btn btn-primary' type='submit' name='logout'>Atsijungti</button>";
+    //echo "</form>";
 
-    if(isset($_GET["logout"])) {
-        setcookie("prisijungta", "", time() - 3600, "/");
-        header("Location: index.php");
-    }
-}    
+    //if(isset($_GET["logout"])) {
+       // setcookie("prisijungta", "", time() - 3600, "/");
+        //header("Location: index.php");
+    ///}
+//}    
 ?>
 
 <?php 
@@ -53,10 +53,10 @@ if(isset($_GET["ID"])) {
     $sql = "DELETE FROM `imones` WHERE ID = $id";
     
     if(mysqli_query($conn, $sql)) {
-        $message = "Imone sekmingai istrinta";
+        $message = "Imonė sėkmingai ištrinta";
         $class="success";
     } else {
-        $message = "Kazkas ivyko negerai";
+        $message = "Kažkas įvyko negerai";
         $class="danger";
     }
 }

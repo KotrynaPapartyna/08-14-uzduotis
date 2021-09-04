@@ -1,6 +1,7 @@
-<?php 
-    require_once("connection.php");
-?>
+<?php require_once("connection.php");?>
+ 
+<?php require_once("linkai.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naujo kliento pridėjimas</title>
-
-    <?php require_once("linkai.php"); ?>
     
     <style>
         h1 {
@@ -35,20 +34,27 @@
 <?php 
 
 if (isset($_COOKIE["prisijungta"])) {
-    header("Location:index.php"); 
+   header("Location:index.php"); 
 }
 
 if(isset($_GET["submit"])) {
-    if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) && isset($_GET["teises_id"]) 
-    && !empty($_GET["vardas"]) && !empty($_GET["pavarde"]) && !empty($_GET["teises_id"])) {
+    if(isset($_GET["vardas"]) && isset($_GET["pavarde"]) 
+    && isset($_GET["teises_id"]) 
+
+    && !empty($_GET["vardas"]) && !empty($_GET["pavarde"]) 
+    && !empty($_GET["teises_id"])) {
         // $id = $_GET["ID"];
+
         $vardas = $_GET["vardas"];
         $pavarde = $_GET["pavarde"];
         $teises_id = intval($_GET["teises_id"]);
+        //$aprasymas=$_GET["aprasymas"];
+        //$prisijungimo_data=getdate(); 
+        //$imones_id=intval($_GET["imones_id"]);
 
     
     $sql = "INSERT INTO `klientai`(`vardas`, `pavarde`, `teises_id`) 
-        VALUES ($vardas, $pavarde, $teises_id)"; 
+            VALUES ($vardas, $pavarde, $teises_id)"; 
 
         if(mysqli_query($conn, $sql)) {
             $message =  "Vartotojas pridetas sėkmingai";
@@ -63,7 +69,7 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-    <h1>Vartotojo sukūrimas</h1>
+    <h1>Kliento sukūrimas</h1>
     
         <form action="naujasKlientas.php" method="get">
                 
@@ -92,6 +98,14 @@ if(isset($_GET["submit"])) {
                         ?>
                     </select>
                 </div>
+
+
+                <div class="row">
+                        <div class="col-lg-12">
+                            <textarea class="form-control" id="aprasymas" name="aprasymas"></textarea>
+                        </div>
+                    </div>   
+                               
 
                 <a href="klientai.php">Atgal</a><br>
                 <button class="btn btn-primary" type="submit" name="submit">Naujas klientas</button>
