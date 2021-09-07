@@ -8,13 +8,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Įmonės redagavimas</title>
+    <title>Imones redagavimas</title>
 
     <?php require_once("linkai.php"); ?>
     
     <style>
         h1 {
             text-align: center;
+            font-style: oblique;
         }
 
         .container {
@@ -34,15 +35,12 @@
 
 <?php 
 
-    if (isset($_COOKIE["prisijungta"])) {
-        header ("Location:index.php");
-    }
+    //if (isset($_COOKIE["prisijungta"])) {
+        //header ("Location:index.php");
+   // }
 
 //mes pagal ID turetume isvesti visus duomenis i input apie klienta
 //ir naujus duomenis per UPDATE sukelti i duomenu baze
-
-// imone- issitrina, redaguojasi. 
-// redaguojasi tik pavadinimas
 
 if(isset($_GET["ID"])) {
     $id = $_GET["ID"];
@@ -53,7 +51,7 @@ if(isset($_GET["ID"])) {
 
     if($result->num_rows == 1) {
       
-        $imone = mysqli_fetch_array($result);
+        $client = mysqli_fetch_array($result);
         $hideForm = false;
     
     } else {
@@ -63,40 +61,39 @@ if(isset($_GET["ID"])) {
 
 if(isset($_GET["submit"])) {
     
-    if(isset($_GET["ID"]) 
-    && isset($_GET["pavadinimas"]) 
+    if(isset($_GET["pavadinimas"]) && isset($_GET["aprasymas"]) 
     && isset($_GET["tipas_id"]) 
-
-    && !empty($_GET["ID"]) 
+    
     && !empty($_GET["pavadinimas"]) 
-    && !empty($_GET["tipas_id"])) {
-
-        $ID = $_GET["ID"];
+    && !empty($_GET["aprasymas"]) && !empty($_GET["tipas_id"])) {
+        
+        $id = $_GET["ID"];
         $pavadinimas = $_GET["pavadinimas"];
+        $aprasymas = $_GET["aprasymas"];
         $tipas_id = intval($_GET["tipas_id"]);
+        //$aprasymas = $_GET["aprasymas"];
 
-        $sql = "UPDATE `imones` SET `ID`='$ID',
-        `pavadinimas`='$pavadinimas',`tipas_id`=$tipas_id WHERE ID = $id";
+        $sql = "UPDATE `imones` SET `pavadinimas`='$pavadinimas',
+        `aprasymas`='$aprasymas',`tipas_id`=$tipas_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Imone redaguota sėkmingai";
+            $message =  "Įmonė $pavadinimas redaguota sėkmingai";
             $class = "success";
         } else {
             $message =  "Kažkas įvyko negerai";
             $class = "danger";
         }
     } else {
-        $id = $imone["ID"];
-        $pavadinimas = $imone["pavadinimas"];
-        $tipas_id = intval($imone["tipas_id"]);
-        $aprasymas = $imone["aprasymas"];
+        $id = $client["ID"];
+        $pavadinimas = $client["pavadinimas"];
+        $aprasymas = $client["aprasymas"];
+        $tipas_id = intval($client["tipas_id"]);
 
         $sql = "UPDATE `imones` SET `pavadinimas`='$pavadinimas',
-                `tipas_id`=$tipas_id
-                WHERE ID = $id";
+        `aprasymas`='$aprasymas',`tipas_id`=$tipas_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Imone $pavadinimas redaguota sėkmingai";
+            $message =  "Įmonė redaguotas sėkmingai";
             $class = "success";
         } else {
             $message =  "Kažkas įvyko negerai";
@@ -107,21 +104,26 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-    <h1>Įmonės redagavimas</h1>
+    <h1>Imonės redagavimas</h1>
     <?php if($hideForm == false) { ?>
-        <form action="imoniuredagavimas.php" method="get">
+        <form action="imoniuRedagavimas.php" method="get">
                 
-        <input class="hide" type="text" name="ID" value ="<?php echo $imone["ID"]; ?>" />
+        <input class="hide" type="text" name="ID" value ="<?php echo $client["ID"]; ?>" />
 
         <div class="form-group">
             <label for="pavadinimas">Pavadinimas</label>
-            <input class="form-control" type="text" name="pavadinimas" value="<?php echo $imone["pavadinimas"]; ?>"/>
+            <input class="form-control" type="text" name="pavadinimas" value="<?php echo $client["pavadinimas"]; ?>"/>
         </div>
 
-               
         <div class="form-group">
-            <label for="tipas_id">Tipas</label>
-        <!--<input class="form-control" type="text" name="Teises_ID" value="<?php echo $imone["tipas_id"]; ?>"/>-->
+            <label for="aprasymas">Aprašymas</label>
+            <input class="form-control" type="text" name="aprasymas" value="<?php echo $client["aprasymas"]; ?>"/>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="tipas_id">Teisės</label>
+        <!--<input class="form-control" type="text" name="Teises_ID" value="<?php echo $client["tipas_id"]; ?>"/>-->
         
                           
 
@@ -147,10 +149,11 @@ if(isset($_GET["submit"])) {
 
                 <div class="row">
                         <div class="col-lg-12">
+                            <label for="aprasymas">Aprašymas</label>
                             <textarea class="form-control" id="aprasymas" name="aprasymas"></textarea>
                         </div>
-                </div>  
-
+                </div>   
+        
 
         <a href="imones.php">Atgal</a><br>
         <button class="btn btn-primary" type="submit" name="submit">Redaguoti</button>
@@ -163,7 +166,7 @@ if(isset($_GET["submit"])) {
                 </div>
             <?php } ?>
         <?php } else { ?>
-            <h2> Tokios imones nėra </h2>
+            <h2> Tokio imones nėra </h2>
             <a href="imones.php">Atgal</a>
         <?php }?>    
     </div>

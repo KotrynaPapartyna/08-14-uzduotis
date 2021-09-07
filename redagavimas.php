@@ -76,7 +76,7 @@ if(isset($_GET["submit"])) {
         `pavarde`='$pavarde',`teises_id`=$teises_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Vartotojas redaguotas sėkmingai";
+            $message =  "Vartotojas $vardas redaguotas sėkmingai";
             $class = "success";
         } else {
             $message =  "Kažkas įvyko negerai";
@@ -92,10 +92,10 @@ if(isset($_GET["submit"])) {
         `pavarde`='$pavarde',`teises_id`=$teises_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Vartotojas $vardas redaguotas sėkmingai";
+            $message =  "Klientas redaguotas sėkmingai";
             $class = "success";
         } else {
-            $message =  "Kazkas ivyko negerai";
+            $message =  "Kažkas įvyko negerai";
             $class = "danger";
         }
     }
