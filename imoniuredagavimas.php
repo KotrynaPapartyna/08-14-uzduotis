@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imones redagavimas</title>
+    <title>Įmonės redagavimas</title>
 
     <?php require_once("linkai.php"); ?>
     
@@ -93,7 +93,7 @@ if(isset($_GET["submit"])) {
         `aprasymas`='$aprasymas',`tipas_id`=$tipas_id WHERE ID = $id";
 
         if(mysqli_query($conn, $sql)) {
-            $message =  "Įmonė redaguotas sėkmingai";
+            $message =  "Įmonė $pavadinimas redaguota sėkmingai";
             $class = "success";
         } else {
             $message =  "Kažkas įvyko negerai";
@@ -104,7 +104,7 @@ if(isset($_GET["submit"])) {
 ?>
 
 <div class="container">
-    <h1>Imonės redagavimas</h1>
+    <h1>Įmonės redagavimas</h1>
     <?php if($hideForm == false) { ?>
         <form action="imoniuRedagavimas.php" method="get">
                 
@@ -166,7 +166,7 @@ if(isset($_GET["submit"])) {
                 </div>
             <?php } ?>
         <?php } else { ?>
-            <h2> Tokio imones nėra </h2>
+            <h2> Tokios įmonės nėra </h2>
             <a href="imones.php">Atgal</a>
         <?php }?>    
     </div>

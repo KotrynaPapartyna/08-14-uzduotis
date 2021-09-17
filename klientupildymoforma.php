@@ -71,7 +71,7 @@ if(isset($_GET["submit"])) {
             $message =  "Vartotojas:  $vardas  $pavarde, pridėtas sėkmingai";
             $class = "success";
         } else {
-            $message =  "Kažkas įvyko negerai";
+            $message =  "Kažkas įvyko negerai"; // zinute matoma kai ivykdyta klaidinga uzklausa, tokiu atveju ieskoti klaidos uzklausoje
             $class = "danger";
         }
     } else {

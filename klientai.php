@@ -37,10 +37,10 @@ if(isset($_GET["ID"])) {
     $id = $_GET["ID"];
     $sql = "DELETE FROM `klientai` WHERE ID = $id";
     if(mysqli_query($conn, $sql)) {
-        $message = "Klientas sekmingai istrintas";
+        $message = "Klientas sėkmingai ištrintas";
         $class="success";
     } else {
-        $message = "Kazkas ivyko negerai";
+        $message = "Kažkas įvyko negerai";
         $class="danger";
     }
 }
@@ -187,8 +187,10 @@ if(isset($_GET["ID"])) {
     }
 
 
-        $sql = "SELECT klientai.ID, klientai.vardas, klientai.pavarde, klientai_teises.pavadinimas FROM klientai 
-        LEFT JOIN klientai_teises ON klientai_teises.reiksme = klientai.teises_id 
+        $sql = "SELECT klientai.ID, klientai.vardas, klientai.pavarde, klientai_teises.pavadinimas 
+        FROM klientai 
+        LEFT JOIN klientai_teises 
+        ON klientai_teises.reiksme = klientai.teises_id 
         WHERE $filtravimas
         ORDER BY $rikiuoti_pagal $rikiavimas
         LIMIT $page_limit , $clients_count 
@@ -283,7 +285,7 @@ if(isset($_GET["ID"])) {
             echo "</p>";
         }
         else {
-            echo "Nepavyko suskaiciuoti klientu";
+            echo "Nepavyko suskaičiuoti klientų";
         }
     ?>
 

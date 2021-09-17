@@ -32,10 +32,10 @@
             VALUES ('$vardas','$pavarde','$teises_id','$aprasymas', '$imones_id')";
 
             if(mysqli_query($conn, $sql)) {
-                echo "Vartotojas sukurtas sekmingai";
+                echo "Klientas sukurtas sekmingai";
                 echo "<br>";
             } else {
-                echo "Kazkas ivyko negerai";
+                echo "Kažkas įvyko negerai"; // zinute matoma kai ivykdyta klaidinga uzklausa, tokiu atveju ieskoti klaidos uzklausoje
                 echo "<br>";
             }
         }
